@@ -213,6 +213,8 @@ function App() {
           <label htmlFor="flv">flv</label>
           <input onClick={setFormat} type="radio" name="format" value="webm" id="webm" className="formatInput" />
           <label htmlFor="webm">webm</label>
+          <input onClick={setFormat} type="radio" name="format" value="3gp" id="3gp" className="formatInput" />
+          <label htmlFor="3gp">3gp</label>
           <input onClick={setFormat} type="radio" defaultChecked name="format" value="mp3" id="mp3" className="formatInput" />
           <label htmlFor="mp3">mp3</label>
           <input onClick={setFormat} type="radio" name="format" value="ogg" id="ogg" className="formatInput" />
@@ -220,7 +222,7 @@ function App() {
           <input onClick={setFormat} type="radio" name="format" value="wav" id="wav" className="formatInput" />
           <label htmlFor="wav">wav</label>
         </div>
-        {["mp4", "flv", "webm", "avi"].includes(formatSelected) ? <select name="quality" id="quality" ref={videoQualityDropdownRef}>
+        {["mp4", "flv", "webm", "avi", '3gp'].includes(formatSelected) ? <select name="quality" id="quality" ref={videoQualityDropdownRef}>
           {currentInfo?.formats.filter(x => x.container === "mp4").map(x => x.qualityLabel).filter(x => x != undefined && x != "").map((x, i) => (
             <option key={i} value={x}>{x}</option>
           ))}

@@ -35,8 +35,32 @@ app.get('/api/videoInfo', async (req, res) => {
     }
 });
 
-app.get('/api/downloadVideo', (req, res) => {
-    res.send('<h1>Video downloading is currently disabled due to technical difficulties</h1>')
+app.get('/api/downloadVideo', async (req, res) => {
+    let url: string = (<any>req.query.url);
+    let formatType: "3gp" | 'flv' | 'webm' | "mp4" | "avi" = (<any>req.query.format);
+    if (formatType == null) return res.sendStatus(422);
+    if (url == null) return res.sendStatus(422);
+    if (!["3gp", 'flv', 'webm', "mp4", "avi"].includes(formatType)) return res.sendStatus(422);
+    if (!ytdl.validateURL(url)) return res.sendStatus(422);
+    try {
+        let data = await ytdl.getInfo(url);
+        if (data == null) return res.sendStatus(404);
+
+        if (formatType == "mp4") {
+            res.header('Content-Disposition', `attachment; filename="${data.videoDetails.title}.mp4"`);
+            ytdl(url).pipe(res);
+        } else {
+            res.header('Content-Disposition', `attachment; filename="${data.videoDetails.title}.${formatType}"`);
+            ffmpeg(ytdl(url)).format(formatType).pipe(res);
+        }
+    } catch (err) {
+        console.log(err);
+        if (err.message == "Video unavailable")
+            res.status(404).send({ msg: 'Video not found' });
+        else if (err.message == "Error: No such format found")
+            res.status(404).send({ msg: 'Format not found' });
+        else res.sendStatus(500);
+    }
 });
 
 // app.get('/api/downloadVideo', async (req, res) => {
