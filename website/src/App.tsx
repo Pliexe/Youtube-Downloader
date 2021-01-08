@@ -164,7 +164,7 @@ function App() {
     dbutton.disabled = true;
 
     if (["mp4", "flv", "avi", "webm"].includes(formatSelected) && videoDropdown?.value != null) {
-      const newwindow = window.open(`http://localhost/api/downloadVideo?url=${currentInfo?.videoDetails.video_url}&format=${formatSelected}&quality=${videoDropdown.value}`);
+      const newwindow = window.open(`/api/downloadVideo?url=${currentInfo?.videoDetails.video_url}&format=${formatSelected}&quality=${videoDropdown.value}`);
 
       if (newwindow == null) return;
       newwindow.onbeforeunload = () => {
@@ -172,7 +172,7 @@ function App() {
         if (dbutton?.disabled != null) dbutton.disabled = false;
       }
     } else {
-      let newwindow = window.open(`http://localhost/api/downloadAudio?url=${currentInfo?.videoDetails.video_url}&format=${formatSelected}`);
+      let newwindow = window.open(`/api/downloadAudio?url=${currentInfo?.videoDetails.video_url}&format=${formatSelected}`);
 
       if (newwindow == undefined) return;
       newwindow.onbeforeunload = () => {
