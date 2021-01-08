@@ -5,11 +5,11 @@ import path, { format } from 'path';
 import ytdl from 'ytdl-core';
 import ffmpeg from 'fluent-ffmpeg';
 
-let PORT = process.env.PORT || 3000;
+let PORT = process.env.PORT || 80;
 
-if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-    PORT = 80;
-}
+// if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+//     PORT = 80;
+// }
 
 const app = express();
 const server = createServer(app);
