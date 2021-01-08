@@ -9,7 +9,7 @@
     "private": false,
     "scripts": {
         "dev": "ts-node-dev --rs src/server.ts",
-        "build": "tsc",
+        "build": "tsc && cd website && yarn build",
         "start": "./dist/server.js"
     },
     "dependencies": {
