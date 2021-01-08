@@ -1,0 +1,137 @@
+.App {
+    background-color: rgb(5, 0, 53);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentDiv {
+    background-color: rgb(34, 34, 99);
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.contentDiv input {
+    background-color: rgb(1, 1, 77);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    width: 100%;
+    outline: none;
+    border: none;
+}
+
+.contentDiv button {
+    background-color: rgb(44, 107, 225);
+    padding: 10px;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    width: 50%;
+    cursor: pointer;
+}
+
+.contentDiv button:disabled {
+    background-color: rgb(76, 77, 191);
+    cursor: not-allowed;
+}
+
+.contentDiv .formats {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.contentDiv .formats input[type="radio"] {
+    display: none;
+}
+
+.contentDiv .formats label {
+    font-weight: bold;
+    font-size: large;
+    background-color: unset;
+    width: 30%;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+}
+
+.contentDiv .formats input[type="radio"]:checked+label {
+    background-color: rgb(20, 9, 49);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.backdrop {
+    background-color: rgba(0, 0, 0, 0.439);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.backdrop * {
+    margin: 5px;
+}
+
+.backdrop .message {
+    background-color: rgb(40, 40, 51);
+    min-height: 150px;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.backdrop .message button {
+    width: 30%;
+    height: 30px;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+.showNoneFirst {
+    display: none;
+}
+
+.videoInfoDiv .videoInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.videoInfoDiv .videoInfo * {
+    margin: 15px;
+}
+
+.videoInfoDiv #quality {
+    background-color: rgb(9, 9, 94);
+    padding: 15px;
+    font-weight: bold;
+    font-size: large;
+    border: none;
+    border-radius: 5px;
+}
+
+.videoInfoDiv button {
+    margin-top: 25px;
+    margin-bottom: 0;
+}
